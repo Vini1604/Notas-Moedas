@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace Notas_Moedas
 {
@@ -22,7 +23,7 @@ namespace Notas_Moedas
         {
             for (int i = 0; i < valoresMonetarios.Length; i++)
             {
-                Console.WriteLine($"{quantidade[i]} {texto} de R$ {valoresMonetarios[i]:F2}");
+                Console.WriteLine($"{quantidade[i]} {texto} de R$ {valoresMonetarios[i].ToString("F2", CultureInfo.InvariantCulture)}");
             }
         }
 
@@ -32,7 +33,7 @@ namespace Notas_Moedas
             double[] moedas = { 1, 0.5, 0.25, 0.10, 0.05, 0.01 };
             int[] quantidadeNotas = new int[notas.Length];
             int[] quantidadeMoedas = new int[moedas.Length];
-            double valorDinheiro = double.Parse(Console.ReadLine());
+            double valorDinheiro = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
 
             quantidadeNotas = CalculaQuantidade(notas, ref valorDinheiro);
             quantidadeMoedas = CalculaQuantidade(moedas, ref valorDinheiro);
